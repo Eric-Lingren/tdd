@@ -18,16 +18,16 @@ After running create-ract-app <project-name>,
 
 The end result of the App.test.js file should look like this:
 
-import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
-import EnzymeAdapter from 'enzyme-adapter-react-16';
-import App from './App';
-
-Enzyme.configure({ adapter: new EnzymeAdapter() })
-
-test('renders without crashing', () => {
-  const wrapper = shallow(<App />)
-});
+import React from 'react';  
+import Enzyme, { shallow } from 'enzyme';  
+import EnzymeAdapter from 'enzyme-adapter-react-16';  
+import App from './App';  
+  
+Enzyme.configure({ adapter: new EnzymeAdapter() })  
+  
+test('renders without crashing', () => {  
+  const wrapper = shallow(<App />)  
+});  
 
 
 Youre done!  Go Test!
