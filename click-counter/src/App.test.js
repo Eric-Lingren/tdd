@@ -73,3 +73,15 @@ test('clicking INCREMENT button increments counter in display', () => {
 });
 
 
+test('clicking DECREMENT button decrements the counter in display', () => {
+    const counter = 7
+    const wrapper = setup(null, { counter });
+
+    //  Find button and click on it
+    const button = findByTestAttr(wrapper, 'decrement-button');
+    button.simulate('click')
+    wrapper.update()
+
+    const counterDisplay = findByTestAttr(wrapper, 'counter-display');
+    expect(counterDisplay.text()).toContain(counter - 1)
+})
