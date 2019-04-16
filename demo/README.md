@@ -1,68 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the core framework for testing a create react app. All dependencies, jest, and enzyme are installed configured and functioning.
 
-## Available Scripts
+Here is the setup for a baseline config to run Jest and Enzyme.
 
-In the project directory, you can run:
+After running create-ract-app <project-name>,
 
-### `npm start`
+1 - Run 'npm i ajv' to update all peer dependencies.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+2 - Install and save jest-enzme, enzyme and enzyme-adapter-react-<react-version-number> to the develpoment environment with the command: 'npm i --save-dev jest-enzyme enzyme enzyme-adapter-react-16'
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+3 - Modify the test file (App.test.js) to be used with enzyme.  You do this by:
+    a)  Remove ReactDom import
+    b)  Replace it with Enzyme import and destructure shallow function : import Enzyme, { shallow } from 'enzyme';
+    c)  Import import EnzymeAdapter from 'enzyme-adapter-react-16';
+    d)  Configure new enzyme adapter : Enzyme.configure({ adapter: new EnzymeAdapter() })
+    e)  Replace test function with shallow wrapper for rendering
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The end result of the App.test.js file should look like this:
 
-### `npm run build`
+import React from 'react';
+import Enzyme, { shallow } from 'enzyme';
+import EnzymeAdapter from 'enzyme-adapter-react-16';
+import App from './App';
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Enzyme.configure({ adapter: new EnzymeAdapter() })
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+test('renders without crashing', () => {
+  const wrapper = shallow(<App />)
+});
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Youre done!  Go Test!

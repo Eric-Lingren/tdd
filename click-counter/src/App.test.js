@@ -3,10 +3,10 @@ import Enzyme, { shallow } from 'enzyme';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
 import App from './App';
 
-Enzyme.configure({ adapter: new EnzymeAdapter() })
+Enzyme.configure({
+  adapter: new EnzymeAdapter()
+})
 
 test('renders without crashing', () => {
-  const wrapper = shallow(<App />)
-  
-  
+  const wrapper = shallow( < App / > )
 });
