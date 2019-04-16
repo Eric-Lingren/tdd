@@ -96,7 +96,7 @@ test('clicking the decrement button prevents the count from going negative', () 
   button.simulate('click')
   wrapper.update()
 
-  const counterDisplay = findByTestAttr(wrapper, 'counter-display');
+  const counterDisplay = findByTestAttr(wrapper, 'error-message');
   expect(counterDisplay.text()).toContain('Error')
 
 })
